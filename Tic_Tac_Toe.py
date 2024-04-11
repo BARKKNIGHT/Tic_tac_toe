@@ -5,9 +5,9 @@ def intro():
     print("Following are the numbers corresponding place on the board")
     example = ["#", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     print(example[7] + " | " + example[8] + " | " + example[9])
-    print("---------")
+    print("--|---|--")
     print(example[4] + " | " + example[5] + " | " + example[6])
-    print("---------")
+    print("--|---|--")
     print(example[1] + " | " + example[2] + " | " + example[3])
     print("You may enter the number to place 'X' or 'O' in your turn")
 
@@ -49,9 +49,9 @@ def select_player2(player1, moves, played, allowed_moves):
 
 def display(moves):
     print(moves[7] + " | " + moves[8] + " | " + moves[9])
-    print("---------")
+    print("--|---|--")
     print(moves[4] + " | " + moves[5] + " | " + moves[6])
-    print("---------")
+    print("--|---|--")
     print(moves[1] + " | " + moves[2] + " | " + moves[3])
 
 # Take input from player 1
