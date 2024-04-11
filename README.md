@@ -1,2 +1,3 @@
 # Tic_tac_toe
-My first project :)
+My first project in python :)
+
