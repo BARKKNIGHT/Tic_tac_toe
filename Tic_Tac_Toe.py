@@ -21,29 +21,30 @@ allowed_moves = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 # select 'X' or 'O'
 
-def select_player1(moves, played, allowed_moves):
+def select_player1(moves, played, allowed_moves,player_name_1,player_name_2):
     player1 = "q"
 
     while player1 not in Player_Options:
-        player1 = input("Player 1 ('X' or 'O'):")
+        player1 = input(f"{player_name_1} ('X' or 'O'):")
+        player1=player1.upper()
         if player1 not in Player_Options:
             print("Oops! Seems like you entered an invalid option")
 
-    select_player2(player1, moves,played, allowed_moves)
+    select_player2(player1, moves,played, allowed_moves,player_name_1,player_name_2)
 
 
-def select_player2(player1, moves, played, allowed_moves):
+def select_player2(player1, moves, played, allowed_moves,player_name_1,player_name_2):
 
     if player1 == 'X':
         player2 = 'O'
     elif player1 == 'O':
         player2 = 'X'
 
-    print(f"Player 1 is {player1}")
-    print(f"Player 2 is {player2}")
+    print(f"{player_name_1} is {player1}")
+    print(f"{player_name_2} is {player2}")
 
     display(moves)
-    play1(played, allowed_moves, player1, player2, moves)
+    play1(played, allowed_moves, player1, player_name_1, player2, player_name_2, moves)
 
 # For displaying the board after every turn :]
 
@@ -56,14 +57,14 @@ def display(moves):
 
 # Take input from player 1
 
-def play1(played, allowed_moves, player1, player2, moves):
+def play1(played, allowed_moves, player1, player_name_1, player2, player_name_2, moves):
 
     move_played = "q"
 
     next_play = 2
 
     while move_played.isdigit() == False or move_played not in allowed_moves or move_played in played:
-        move_played = input("Player 1's Turn (1-9):")
+        move_played = input(f"{player_name_1}'s Turn (1-9):")
 
         if move_played.isdigit() == False or move_played not in allowed_moves or move_played in played:
             print("Oops! Seems like you entered an invalid move \nEnter a valid digit!")
@@ -74,10 +75,10 @@ def play1(played, allowed_moves, player1, player2, moves):
 
     display(moves)
 
-    win_condition(moves, player1, player2, played, allowed_moves, next_play)
+    win_condition(moves, player1,player_name_1, player2,player_name_2, played, allowed_moves, next_play)
 
 
-def play2(played, allowed_moves, player1, player2, moves):
+def play2(played, allowed_moves, player1,player_name_1, player2,player_name_2,moves):
 
     move_played = "q"
 
@@ -85,7 +86,7 @@ def play2(played, allowed_moves, player1, player2, moves):
 
 
     while move_played.isdigit() == False or move_played not in allowed_moves or move_played in played:
-        move_played = input("Player 2's Turn (1-9):")
+        move_played = input(f"{player_name_1}'s Turn (1-9):")
 
         if move_played.isdigit() == False or move_played not in allowed_moves or move_played in played:
             print("Oops! Seems like you entered an invalid move \nEnter a valid digit!")
@@ -95,20 +96,20 @@ def play2(played, allowed_moves, player1, player2, moves):
     played.append(move_played)
 
     display(moves)
-    win_condition(moves, player1, player2, played, allowed_moves, next_play)
+    win_condition(moves, player1,player_name_1, player2,player_name_2, played, allowed_moves, next_play)
 
 
 
-def win_condition(moves, player1, player2, played, allowed_moves, next_play):
+def win_condition(moves, player1,player_name_1, player2, player_name_2,played, allowed_moves, next_play):
     n = 1
     while n < 8:
         if moves[n] == moves[n+1] == moves[n+2] == player1:  # For checking horizontal
-            print("Player 1 won (horizontal)")
-            print("Sometimes you are never meant to win player 2!!")
+            print(f"{player_name_1} won (horizontal)")
+            print(f"Sometimes you are never meant to win {player_name_2}!!")
             return None
 
         elif moves[n] == moves[n+1] == moves[n+2] == player2:  # For checking horizontal
-            print("Player 2 won (horizontal)")
+            print(f"{player_name_2} won (horizontal)")
             print("👀👀")
             return None
 
@@ -118,12 +119,12 @@ def win_condition(moves, player1, player2, played, allowed_moves, next_play):
     while n < 4:
 
         if moves[n] == moves[n+3] == moves[n+6] == player1:  # For checking vertical
-            print("Player 1 won (vertical)")
-            print("Sometimes you are never meant to win player 2!!")
+            print(f"{player_name_1} won (vertical)")
+            print(f"Sometimes you are never meant to win {player_name_2}!!")
             return None
 
         elif moves[n] == moves[n+3] == moves[n+6] == player2:  # For checking vertical
-            print("Player 2 won (vertical)")
+            print(f"{player_name_2} won (vertical)")
             return None
 
         n = n + 1
@@ -131,19 +132,19 @@ def win_condition(moves, player1, player2, played, allowed_moves, next_play):
     n = 1
 
     if moves[n] == moves[n+4] == moves[n+8] == player1:  # For checking diagonal \
-        print("Player 1 won (diagonal)")
+        print(f"{player_name_1}won (diagonal)")
         print("👀👀")
 
 
     elif moves[n] == moves[n+4] == moves[n+8] == player2:  # For checking diagonal \
-        print("Player 2 won (diagonal)")
+        print(f"{player_name_2} won (diagonal)")
 
     elif moves[n+2] == moves[n+4] == moves[n+6] == player1:  # For checking diagonal /
-        print("Player 1 won (diagonal)")
-        print("Sometimes you are never meant to win player 2!!")
+        print(f"{player_name_2} won (diagonal)")
+        print(f"Sometimes you are never meant to win {player_name_2}!!")
 
     elif moves[n+2] == moves[n+4] == moves[n+6] == player2:  # For checking diagonal /
-        print("Player 2 won (diagonal)")
+        print(f"{player_name_2} won (diagonal)")
 
     elif len(played) == len(allowed_moves):
         print("It's a tie!!")
@@ -151,10 +152,10 @@ def win_condition(moves, player1, player2, played, allowed_moves, next_play):
 
 
     elif next_play == 1:
-        play1(played, allowed_moves, player1, player2, moves)
+        play1(played, allowed_moves, player1, player_name_1, player2, player_name_2, moves)
 
     elif next_play == 2:
-        play2(played, allowed_moves, player1, player2, moves)
+        play2(played, allowed_moves, player1, player_name_1, player2, player_name_2, moves)
 
 
 # Wanna play again? 👀👀
@@ -163,6 +164,7 @@ def play_again():
     again = "M"
     while again not in ["Y", "N"]:
         again = input("Play again? (Y or N):")
+        again=again.upper()
         if again not in ["Y", "N"]:
             print("Oops! Seems like you entered an invalid option")
 
@@ -183,7 +185,9 @@ def main():
         allowed_moves = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] # To cross-check the move is valid
 
         intro()
-        select_player1(moves, played, allowed_moves)
+        player_name_1=input("Enter name of player 1:")
+        player_name_2=input("Enter name of player 2:")
+        select_player1(moves, played, allowed_moves,player_name_1,player_name_2)
         again = play_again()
 
 main()
