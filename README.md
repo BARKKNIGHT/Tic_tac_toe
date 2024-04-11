@@ -12,11 +12,11 @@ The first player to get 3 of their marks in a row (up, down, across, or diagonal
 Board Numbering
 The board is numbered as follows:
 
-7    8    9 |
+7  |  8  |  9 
 
-4    5    6 |
+4  |  5  |  6 
 
-1    2    3 |
+1  |  2  |  3 
 
 You may enter the number to place 'X' or 'O' in your turn.
 
