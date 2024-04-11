@@ -4,7 +4,7 @@ My first project in python :)
 Instructions:
 Welcome to the game of tic tac toe
 Following are the numbers corresponding place on the board
-7 | 8 | 9
+7 | 8  9
 --|---|--
 4 | 5 | 6
 --|---|--
