@@ -86,7 +86,7 @@ def play2(played, allowed_moves, player1,player_name_1, player2,player_name_2,mo
 
 
     while move_played.isdigit() == False or move_played not in allowed_moves or move_played in played:
-        move_played = input(f"{player_name_1}'s Turn (1-9):")
+        move_played = input(f"{player_name_2}'s Turn (1-9):")
 
         if move_played.isdigit() == False or move_played not in allowed_moves or move_played in played:
             print("Oops! Seems like you entered an invalid move \nEnter a valid digit!")
